@@ -9,11 +9,11 @@ dnl Inspiration from http://autoconf-archive.cryp.to
 dnl tell automake the this script is for rrdtool
 
 dnl Minimum Autoconf version required.
-AC_PREREQ(2.59)
+AC_PREREQ([2.69])
 
 dnl the official version number is
 dnl a.b.c
-AC_INIT([rrdtool],m4_esyscmd([tr -d '\n' < VERSION]))
+AC_INIT([rrdtool],[m4_esyscmd(tr -d '\n' < VERSION)])
 AC_CONFIG_AUX_DIR(conftools)
 
 dnl for testing a numerical version number comes handy
@@ -177,7 +177,7 @@ dnl Check for the compiler and static/shared library creation.
 AC_PROG_CPP
 AC_PROG_CC
 AM_PROG_CC_C_O
-AC_PROG_LIBTOOL
+LT_INIT
 
 dnl Try to detect/use GNU features
 CFLAGS="$CFLAGS -D_GNU_SOURCE"
@@ -342,7 +342,7 @@ volatile int x;volatile float f;  ]], [[x = isinf(f)]])],[AC_MSG_RESULT(yes)
 
 dnl finite is BSD, isfinite is C99, so prefer the latter
 AC_CACHE_CHECK([whether isfinite is broken],[ac_cv_have_broken_isfinite],[
-AC_TRY_RUN([
+AC_RUN_IFELSE([AC_LANG_SOURCE([[
 #ifdef HAVE_MATH_H
 #include <math.h>
 #endif
@@ -360,7 +360,7 @@ int main ()
 #endif
 #endif
 return 0;
-}],[ac_cv_have_broken_isfinite=no],[ac_cv_have_broken_isfinite=yes],[
+}]])],[ac_cv_have_broken_isfinite=no],[ac_cv_have_broken_isfinite=yes],[
 case "${target}" in
   hppa*-*-hpux*) ac_cv_have_broken_isfinite=yes ;;
   *-solaris2.8) ac_cv_have_broken_isfinite=yes ;;
@@ -396,16 +396,13 @@ GC_TIMEZONE()
 
 AC_CACHE_CHECK(whether sigwait has 2 arguments,
     ac_cv_libc_sigwait,
-    AC_TRY_COMPILE([
+    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
         #define _POSIX_PTHREAD_SEMANTICS
         #include <stdio.h>
-        #include <signal.h>],
-        [sigset_t sigs; int signo; sigwait(&sigs, &signo);],
-        AC_DEFINE(HAVE_SIGWAIT,1,[have two argument posix sigwait])
+        #include <signal.h>]], [[sigset_t sigs; int signo; sigwait(&sigs, &signo);]])],[AC_DEFINE(HAVE_SIGWAIT,1,have two argument posix sigwait)
         AC_MSG_RESULT(yes)
-        ,
-        AC_MSG_RESULT(no)        
-    )
+        ],[AC_MSG_RESULT(no)        
+    ])
 )
 
 
@@ -976,7 +973,8 @@ AC_ARG_WITH([systemdsystemunitdir],
 	[], [with_systemdsystemunitdir=$($PKG_CONFIG --variable=systemdsystemunitdir systemd)])
 if test "x$with_systemdsystemunitdir" != xno; then
 	AC_SUBST([systemdsystemunitdir], [$with_systemdsystemunitdir])
-	AC_OUTPUT([etc/rrdcached.socket etc/rrdcached.service])
+	AC_CONFIG_FILES([etc/rrdcached.socket etc/rrdcached.service])
+AC_OUTPUT
 fi
 AM_CONDITIONAL(HAVE_SYSTEMD, [test -n "$with_systemdsystemunitdir" -a "x$with_systemdsystemunitdir" != xno ])
 
@@ -1011,17 +1009,6 @@ AC_OUTPUT
 AC_MSG_CHECKING(in)
 AC_MSG_RESULT(and out again)
 
-echo $ECHO_N "ordering CD from http://tobi.oetiker.ch/wish $ECHO_C" 1>&6
-sleep 1
-echo $ECHO_N ".$ECHO_C" 1>&6
-sleep 1
-echo $ECHO_N ".$ECHO_C" 1>&6
-sleep 1
-echo $ECHO_N ".$ECHO_C" 1>&6
-sleep 1
-echo $ECHO_N ".$ECHO_C" 1>&6
-sleep 1
-AC_MSG_RESULT([ just kidding ;-)])
 echo
 echo "----------------------------------------------------------------"
 echo "Config is DONE!"
@@ -1031,14 +1018,18 @@ echo "          With Locking: $enable_flock"
 echo "       Build rrd_graph: $enable_rrd_graph"
 echo "     Build rrd_restore: $enable_rrd_restore"
 echo "       Static programs: $staticprogs"
+if test "$enable_perl" = "yes"; then
 echo "          Perl Modules: $COMP_PERL"
 echo "           Perl Binary: $PERL"
 echo "          Perl Version: $PERL_VERSION"
 echo "          Perl Options: $PERL_MAKE_OPTIONS"
+fi
+if test "$enable_ruby" = "yes"; then
 echo "          Ruby Modules: $COMP_RUBY"
 echo "           Ruby Binary: $RUBY"
 echo "          Ruby Options: $RUBY_MAKE_OPTIONS"
 echo "    Build Lua Bindings: $enable_lua"
+fi
 if test "$enable_lua" = "yes"; then
 echo "            Lua Binary: $LUA"
 echo "           Lua Version: $lua_version"
@@ -1064,9 +1055,8 @@ echo
 echo "Type 'make' to compile the software and use 'make install' to "
 echo "install everything to: $prefix."
 echo 
-echo "       ... that wishlist is NO JOKE. If you find RRDtool useful"
-echo "make me happy. Go to http://tobi.oetiker.ch/wish and"
-echo "place an order."
+echo "If you find RRDtool useful, please make me happy."
+echo "Go to http://tobi.oetiker.ch/wish and place an order."
 echo 
 echo "                               -- Tobi Oetiker <tobi@oetiker.ch>"
 echo "----------------------------------------------------------------"
