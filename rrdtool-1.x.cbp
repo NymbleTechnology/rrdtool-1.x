@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="rrdtool-1.x" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="x86">
+				<Option output="x86/rrdtool-1" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/x86/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="ppc">
+				<Option output="ppc/rrdtool-1" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/ppc/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="CHANGES" />
+		<Unit filename="Makefile.am" />
+		<Unit filename="Makefile.in" />
+		<Unit filename="README.md" />
+		<Unit filename="THREADS" />
+		<Unit filename="TODO" />
+		<Unit filename="VERSION" />
+		<Unit filename="bindings/lua/compat-5.1r5/compat-5.1.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="bindings/lua/compat-5.1r5/compat-5.1.h" />
+		<Unit filename="bindings/lua/rrdlua.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="bindings/python/rrdtoolmodule.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="bindings/ruby/main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="bindings/tcl/tclrrd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="bootstrap" />
+		<Unit filename="conf.sh" />
+		<Unit filename="configure.ac" />
+		<Unit filename="rrdtool.spec" />
+		<Unit filename="src/fnv.h" />
+		<Unit filename="src/gettext.h" />
+		<Unit filename="src/hash_32.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/mkstemp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/mkstemp.h" />
+		<Unit filename="src/mutex.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/mutex.h" />
+		<Unit filename="src/optparse.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/optparse.h" />
+		<Unit filename="src/plbasename.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/plbasename.h" />
+		<Unit filename="src/pngsize.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/quicksort.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/quicksort.h" />
+		<Unit filename="src/rrd.h" />
+		<Unit filename="src/rrd_cgi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_client.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_client.h" />
+		<Unit filename="src/rrd_config.h" />
+		<Unit filename="src/rrd_config_bottom.h" />
+		<Unit filename="src/rrd_create.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_create.h" />
+		<Unit filename="src/rrd_daemon.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_datalang.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_diff.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_dump.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_error.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_fetch.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_fetch_cb.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_fetch_libdbi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_first.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_flushcached.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_format.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_format.h" />
+		<Unit filename="src/rrd_gfx.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_graph.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_graph.h" />
+		<Unit filename="src/rrd_graph_helper.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_hw.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_hw.h" />
+		<Unit filename="src/rrd_hw_math.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_hw_math.h" />
+		<Unit filename="src/rrd_hw_update.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_hw_update.h" />
+		<Unit filename="src/rrd_i18n.h" />
+		<Unit filename="src/rrd_info.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_is_thread_safe.h" />
+		<Unit filename="src/rrd_last.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_lastupdate.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_modify.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_modify.h" />
+		<Unit filename="src/rrd_nan_inf.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_open.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_parsetime.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_parsetime.h" />
+		<Unit filename="src/rrd_rados.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_rados.h" />
+		<Unit filename="src/rrd_resize.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_restore.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_restore.h" />
+		<Unit filename="src/rrd_rpncalc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_rpncalc.h" />
+		<Unit filename="src/rrd_snprintf.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_snprintf.h" />
+		<Unit filename="src/rrd_strtod.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_strtod.h" />
+		<Unit filename="src/rrd_thread_safe.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_thread_safe_nt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_tool.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_tool.h" />
+		<Unit filename="src/rrd_tune.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_update.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_update.h" />
+		<Unit filename="src/rrd_utils.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_version.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_xport.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/rrd_xport.h" />
+		<Unit filename="src/rrdupdate.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/strftime.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/strftime.h" />
+		<Unit filename="src/unused.h" />
+		<Unit filename="src/win32comp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="win32/librrd-4.rc" />
+		<Unit filename="win32/rrd_config.h" />
+		<Unit filename="win32/rrdcgi.rc" />
+		<Unit filename="win32/rrdtool.rc" />
+		<Unit filename="win32/rrdupdate.rc" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
