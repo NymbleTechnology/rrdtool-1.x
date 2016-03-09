@@ -70,3 +70,7 @@ Makefile
 /win32/*.sdf
 /bindings/dotnet/*.suo
 /win32/*.opensdf
+
+conf.sh
+*.cbp
+*.layout
